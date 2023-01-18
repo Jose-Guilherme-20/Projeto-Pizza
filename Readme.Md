@@ -4,5 +4,7 @@
 <ul>
     <li>Metódos Array</li>
     <li>DOM</li>
+    <li>Funções</li>
+    <li>Métodos</li>
     
 <ul>

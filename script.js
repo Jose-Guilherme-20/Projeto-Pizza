@@ -1,5 +1,6 @@
 let modalQt = 1;
-
+let cart = [];
+let modalKey = 0;
 pizzaJson.map((item, index) => {
   let pizzaItem = document.querySelector(".models .pizza-item").cloneNode(true);
 
@@ -18,6 +19,7 @@ pizzaJson.map((item, index) => {
     e.preventDefault();
     let key = e.target.closest(".pizza-item").getAttribute("data-key");
     modalQt = 1;
+    modalKey = key;
 
     document.querySelector(".pizzaInfo h1").innerHTML = pizzaJson[key].name;
     document.querySelector(".pizzaBig img").src = pizzaJson[key].img;
@@ -83,3 +85,20 @@ document.querySelectorAll(".pizzaInfo--size").forEach((size, sizeIndex) => {
     size.classList.add("selected");
   });
 });
+document
+  .querySelector(".pizzaInfo--addButton")
+  .addEventListener("click", () => {
+    let size = parseInt(
+      document
+        .querySelector(".pizzaInfo--size.selected")
+        .getAttribute("data-key")
+    );
+
+    cart.push({
+      id: pizzaJson[modalKey].id,
+      size,
+      qt: modalQt,
+    });
+
+    closeModal();
+  });
