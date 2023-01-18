@@ -1,6 +1,8 @@
+let modalQt = 1;
+
 pizzaJson.map((item, index) => {
   let pizzaItem = document.querySelector(".models .pizza-item").cloneNode(true);
-  let modalQt = 1;
+
   // preencher as informações em pizzaItem
   pizzaItem.setAttribute("data-key", index);
   pizzaItem.querySelector(".pizza-item--name").innerHTML = item.name;
@@ -62,3 +64,22 @@ document
   .forEach((item) => {
     item.addEventListener("click", closeModal);
   });
+
+document.querySelector(".pizzaInfo--qtmenos").addEventListener("click", () => {
+  if (modalQt > 1) {
+    modalQt--;
+    document.querySelector(".pizzaInfo--qt").innerHTML = modalQt;
+  }
+});
+document.querySelector(".pizzaInfo--qtmais").addEventListener("click", () => {
+  modalQt++;
+  document.querySelector(".pizzaInfo--qt").innerHTML = modalQt;
+});
+document.querySelectorAll(".pizzaInfo--size").forEach((size, sizeIndex) => {
+  size.addEventListener("click", () => {
+    document
+      .querySelector(".pizzaInfo--size.selected")
+      .classList.remove("selected");
+    size.classList.add("selected");
+  });
+});
